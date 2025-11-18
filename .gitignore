@@ -1,0 +1,12 @@
+node_modules
+pnpm-lock.yaml
+dist
+.DS_Store
+.env
+*.local
+*.log
+client/dist
+# Generated raster assets (store locally only)
+public/*.png
+client/public/*.png
+favicon.png
