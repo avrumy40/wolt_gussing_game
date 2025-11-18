@@ -100,7 +100,7 @@ export default function CategorySelection({
                 Wolt Food Quiz
               </h1>
               <p className="text-xs md:text-sm text-muted-foreground">
-                Glassmorphic Tel Aviv challenge
+                Sleek Tel Aviv challenge
               </p>
             </div>
           </div>
