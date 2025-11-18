@@ -472,77 +472,81 @@ def save_png(path: Path, data, width, height):
         f.write(chunk(b"IEND", b""))
 
 
-# --- Logo PNG ---
+# --- Logo PNG (local-only helper) ---
 logo_w, logo_h = 512, 512
-logo_bg_top = (6, 214, 255)
-logo_bg_bottom = (1, 109, 167)
+logo_bg_top = (52, 232, 255)
+logo_bg_bottom = (10, 46, 128)
 logo_data = fill_background(logo_w, logo_h, logo_bg_top, logo_bg_bottom)
-add_glow(logo_data, logo_w, logo_h, 120, 120, 130, (255, 255, 255, 80), 1.2)
-add_glow(logo_data, logo_w, logo_h, 380, 380, 160, (0, 226, 255, 120), 1.0)
-draw_rounded_rect(logo_data, logo_w, logo_h, 96, 96, 416, 416, 64, (255, 255, 255, 56))
-draw_rounded_rect(logo_data, logo_w, logo_h, 120, 120, 392, 392, 48, (255, 255, 255, 90))
+
+add_glow(logo_data, logo_w, logo_h, 120, 120, 140, (255, 255, 255, 82), 1.2)
+add_glow(logo_data, logo_w, logo_h, 400, 160, 160, (0, 198, 255, 120), 1.0)
+add_glow(logo_data, logo_w, logo_h, 220, 400, 180, (4, 22, 72, 170), 1.0)
+
+draw_rounded_rect(logo_data, logo_w, logo_h, 92, 92, 420, 420, 70, (255, 255, 255, 54))
+draw_rounded_rect(logo_data, logo_w, logo_h, 120, 120, 392, 392, 58, (255, 255, 255, 92))
 
 for offset in range(5):
     draw_rounded_rect(
         logo_data,
         logo_w,
         logo_h,
-        140 + offset * 6,
-        180 + offset * 8,
-        380 + offset * 6,
-        190 + offset * 8,
+        142 + offset * 6,
+        176 + offset * 8,
+        382 + offset * 6,
+        188 + offset * 8,
         18,
-        (255, 255, 255, 40 - offset * 6),
+        (255, 255, 255, 44 - offset * 6),
     )
 
-add_glow(logo_data, logo_w, logo_h, 256, 210, 90, (255, 255, 255, 80), 1.0)
-draw_text(logo_data, logo_w, "WOLT", 150, 180, (255, 255, 255, 255), scale=6)
-draw_text(logo_data, logo_w, "QUIZ", 170, 250, (255, 255, 255, 220), scale=5)
-draw_text(logo_data, logo_w, "GAME", 170, 310, (0, 31, 63, 220), scale=4)
+add_glow(logo_data, logo_w, logo_h, 256, 210, 94, (255, 255, 255, 88), 1.0)
+draw_text(logo_data, logo_w, "WOLT", 150, 170, (255, 255, 255, 255), scale=6)
+draw_text(logo_data, logo_w, "GUESS", 148, 242, (255, 255, 255, 230), scale=5)
+draw_text(logo_data, logo_w, "FOOD MAP", 154, 310, (0, 31, 63, 220), scale=4)
 
 token_colors = [
-    (255, 255, 255, 140),
-    (255, 255, 255, 80),
+    (255, 255, 255, 150),
+    (255, 255, 255, 88),
 ]
-for i, cx in enumerate([200, 256, 312]):
-    add_glow(logo_data, logo_w, logo_h, cx, 110, 34, token_colors[i % 2], 1.0)
+for i, cx in enumerate([190, 256, 322]):
+    add_glow(logo_data, logo_w, logo_h, cx, 110, 36, token_colors[i % 2], 1.0)
 
-save_png(Path("client/public/logo-game.png"), logo_data, logo_w, logo_h)
+save_png(Path("attached_assets/logo-game.png"), logo_data, logo_w, logo_h)
 
-# --- Social card PNG ---
+# --- Social card PNG (local-only helper) ---
 card_w, card_h = 1200, 630
-card_data = fill_background(card_w, card_h, (11, 199, 255), (5, 32, 89))
-add_glow(card_data, card_w, card_h, 150, 120, 200, (255, 255, 255, 90), 1.0)
-add_glow(card_data, card_w, card_h, 1000, 220, 220, (0, 226, 255, 140), 0.8)
-add_glow(card_data, card_w, card_h, 500, 540, 260, (4, 13, 38, 180), 1.0)
+card_data = fill_background(card_w, card_h, (52, 232, 255), (8, 43, 114))
 
-card_margin = 120
-draw_rounded_rect(card_data, card_w, card_h, card_margin, 150, card_w - card_margin, 520, 40, (255, 255, 255, 56))
-draw_rounded_rect(card_data, card_w, card_h, card_margin + 14, 164, card_w - card_margin - 14, 506, 36, (255, 255, 255, 80))
+add_glow(card_data, card_w, card_h, 180, 140, 220, (255, 255, 255, 96), 1.0)
+add_glow(card_data, card_w, card_h, 980, 180, 200, (0, 198, 255, 130), 0.9)
+add_glow(card_data, card_w, card_h, 520, 560, 280, (4, 20, 70, 200), 1.0)
 
-draw_rounded_rect(card_data, card_w, card_h, card_margin + 40, 210, card_w - card_margin - 40, 230, 14, (0, 0, 0, 35))
-draw_rounded_rect(card_data, card_w, card_h, card_margin + 40, 420, card_w - card_margin - 40, 440, 14, (0, 0, 0, 28))
+card_margin = 110
+draw_rounded_rect(card_data, card_w, card_h, card_margin, 150, card_w - card_margin, 520, 44, (255, 255, 255, 60))
+draw_rounded_rect(card_data, card_w, card_h, card_margin + 14, 166, card_w - card_margin - 14, 504, 38, (255, 255, 255, 86))
 
-add_glow(card_data, card_w, card_h, 200, 150, 120, (255, 255, 255, 120), 1.0)
-draw_text(card_data, card_w, "WOLT FOOD QUIZ", 190, 180, (255, 255, 255, 255), scale=6)
-draw_text(card_data, card_w, "GUESS THE RESTAURANT", 190, 250, (255, 255, 255, 220), scale=5)
-draw_text(card_data, card_w, "10 QUESTIONS - TEL AVIV BITES", 190, 310, (0, 31, 63, 220), scale=4)
+draw_rounded_rect(card_data, card_w, card_h, card_margin + 40, 214, card_w - card_margin - 40, 234, 16, (0, 0, 0, 40))
+draw_rounded_rect(card_data, card_w, card_h, card_margin + 40, 420, card_w - card_margin - 40, 440, 16, (0, 0, 0, 30))
 
-chip_centers = [(270 + i * 180, 385) for i in range(4)]
+add_glow(card_data, card_w, card_h, 220, 170, 130, (255, 255, 255, 130), 1.0)
+draw_text(card_data, card_w, "WOLT GUESS", 190, 186, (255, 255, 255, 255), scale=6)
+draw_text(card_data, card_w, "MAP THE RESTAURANT", 190, 254, (255, 255, 255, 230), scale=5)
+draw_text(card_data, card_w, "10 DISHES • TEL AVIV EDITION", 190, 316, (0, 31, 63, 220), scale=4)
+
+chip_centers = [(270 + i * 180, 392) for i in range(4)]
 chip_colors = [
-    (255, 255, 255, 200),
-    (0, 194, 232, 200),
-    (255, 107, 53, 220),
-    (0, 167, 200, 220),
+    (255, 255, 255, 210),
+    (0, 194, 232, 210),
+    (0, 90, 180, 210),
+    (255, 173, 94, 220),
 ]
 for (cx, cy), col in zip(chip_centers, chip_colors):
     add_glow(card_data, card_w, card_h, cx, cy, 70, (col[0], col[1], col[2], 120), 1.0)
-    draw_rounded_rect(card_data, card_w, card_h, cx - 60, cy - 20, cx + 60, cy + 20, 18, (255, 255, 255, 190))
+    draw_rounded_rect(card_data, card_w, card_h, cx - 60, cy - 20, cx + 60, cy + 20, 18, (255, 255, 255, 200))
     add_glow(card_data, card_w, card_h, cx - 20, cy - 4, 24, col, 1.0)
-    add_glow(card_data, card_w, card_h, cx + 24, cy + 6, 18, (0, 0, 0, 60), 1.0)
+    add_glow(card_data, card_w, card_h, cx + 22, cy + 6, 18, (0, 0, 0, 70), 1.0)
 
-draw_text(card_data, card_w, "GLASSMORPHIC", 200, 460, (255, 255, 255, 220), scale=3)
-draw_text(card_data, card_w, "WOLT BLUES", 200, 500, (255, 255, 255, 180), scale=3)
-draw_text(card_data, card_w, "FOODIE CHALLENGE", 520, 480, (255, 255, 255, 220), scale=3)
+draw_text(card_data, card_w, "GLASSY QUIZ", 200, 468, (255, 255, 255, 230), scale=3)
+draw_text(card_data, card_w, "TEL AVIV FLAVORS", 200, 508, (255, 255, 255, 190), scale=3)
+draw_text(card_data, card_w, "GUESS & SHARE", 520, 488, (255, 255, 255, 220), scale=3)
 
-save_png(Path("client/public/social-card.png"), card_data, card_w, card_h)
+save_png(Path("attached_assets/social-card.png"), card_data, card_w, card_h)
