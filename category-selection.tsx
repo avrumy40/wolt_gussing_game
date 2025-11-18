@@ -90,7 +90,7 @@ export default function CategorySelection({
           <div className="flex flex-col items-center justify-center gap-4 mb-4 md:flex-row">
             <motion.img
               src="/logo-game.svg"
-              alt="Wolt Food Quiz logo"
+              alt="Wolt Food Quiz Tel Aviv challenge logo"
               className="h-14 w-14 md:h-16 md:w-16 drop-shadow-xl"
               animate={{ y: [0, -6, 0] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
