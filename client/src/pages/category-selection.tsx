@@ -88,16 +88,22 @@ export default function CategorySelection({
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center justify-center gap-3">
-              <motion.div
-                animate={{ rotate: [0, 10, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-              >
-                <Utensils className="h-8 w-8 md:h-10 md:w-10 text-primary drop-shadow-lg" />
-              </motion.div>
-              <h1 className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-                Wolt Food Quiz
-              </h1>
+            <div className="flex flex-col items-center justify-center gap-4 md:flex-row">
+              <motion.img
+                src="/logo-game.svg"
+                alt="Wolt Food Quiz logo"
+                className="h-14 w-14 md:h-16 md:w-16 drop-shadow-xl"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <div className="text-center md:text-left space-y-1">
+                <h1 className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent text-3xl md:text-4xl font-bold tracking-tight">
+                  Wolt Food Quiz
+                </h1>
+                <p className="text-xs md:text-sm text-muted-foreground">
+                  Glassmorphic Tel Aviv challenge
+                </p>
+              </div>
             </div>
             <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
               Test your knowledge of Tel Aviv's best restaurants!
