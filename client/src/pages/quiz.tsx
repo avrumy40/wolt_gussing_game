@@ -38,17 +38,17 @@ export default function Quiz({
 
   if (!currentQuestion) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-primary/10 via-background to-secondary/10 flex items-center justify-center">
+      <div className="min-h-screen bg-wolt-gradient flex items-center justify-center">
         <p className="text-muted-foreground">Loading question...</p>
       </div>
     );
   }
 
   return (
-    <div className="h-screen overflow-hidden bg-gradient-to-br from-primary/10 via-background to-secondary/10 flex flex-col">
+    <div className="min-h-screen overflow-hidden bg-wolt-gradient flex flex-col">
       {/* Fixed Header */}
-      <div className="flex-shrink-0 px-4 pt-4 pb-2 bg-background/80 backdrop-blur-sm border-b shadow-sm">
-        <div className="max-w-5xl mx-auto">
+      <div className="flex-shrink-0 px-4 pt-4 pb-2">
+        <div className="max-w-5xl mx-auto glass-panel shadow-soft px-4 py-3">
           <div className="flex items-center justify-between mb-2">
             <motion.div
               key={`question-${currentQuestionIndex}`}
@@ -69,7 +69,7 @@ export default function Quiz({
 
       {/* Scrollable Content Area */}
       <div className="flex-1 overflow-y-auto px-4 py-4">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-5xl mx-auto glass-panel shadow-soft p-4 md:p-6">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentQuestionIndex}
@@ -84,8 +84,8 @@ export default function Quiz({
                 whileHover={{ scale: 1.02, rotateX: 2 }}
                 style={{ perspective: 1000 }}
               >
-                <Card className="overflow-hidden border-2 shadow-2xl bg-gradient-to-br from-background to-muted/30 backdrop-blur-sm">
-                  <div className="relative aspect-[16/9] md:aspect-[21/9] bg-muted">
+                <Card className="overflow-hidden bg-white/85 dark:bg-slate-900/70 shadow-soft border border-[var(--glass-stroke)]">
+                  <div className="relative aspect-[16/9] md:aspect-[21/9] bg-muted rounded-xl">
                     {!imageLoaded && (
                       <Skeleton className="absolute inset-0" />
                     )}
@@ -109,12 +109,12 @@ export default function Quiz({
               </motion.div>
 
               {/* Question */}
-              <div className="text-center py-2">
-                <h2 className="text-lg md:text-xl font-bold mb-1">
+              <div className="text-center py-2 space-y-2">
+                <h2 className="text-lg md:text-xl font-semibold">
                   Which restaurant serves this dish?
                 </h2>
                 {currentQuestion.category && (
-                  <Badge variant="outline" className="text-xs capitalize shadow-sm" data-testid="badge-category">
+                  <Badge variant="outline" className="text-xs capitalize shadow-sm pill-muted" data-testid="badge-category">
                     {currentQuestion.category}
                   </Badge>
                 )}
@@ -143,7 +143,7 @@ export default function Quiz({
                       style={{ perspective: 1000 }}
                     >
                       <Card
-                        className={`p-4 md:p-5 border-2 transition-all duration-300 cursor-pointer relative overflow-hidden ${
+                        className={`p-4 md:p-5 border transition-all duration-300 cursor-pointer relative overflow-hidden ${
                           selectedAnswer
                             ? "cursor-not-allowed"
                             : "hover:border-primary hover:shadow-xl"
@@ -153,8 +153,8 @@ export default function Quiz({
                             : showWrong
                             ? "border-red-500 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-950/30 dark:to-red-900/20 shadow-red-500/50 shadow-lg"
                             : isSelected
-                            ? "border-primary"
-                            : "bg-gradient-to-br from-background to-muted/20 backdrop-blur-sm"
+                            ? "border-primary/70 bg-white/90 dark:bg-slate-900/70"
+                            : "bg-white/80 dark:bg-slate-900/70 border-[var(--glass-stroke)]"
                         }`}
                         onClick={() => !selectedAnswer && onAnswerSelect(option)}
                         data-testid={`card-option-${index}`}
@@ -209,8 +209,8 @@ export default function Quiz({
       {/* Fixed Bottom Next Button */}
       <AnimatePresence>
         {selectedAnswer && (
-          <motion.div 
-            className="flex-shrink-0 bg-background/95 backdrop-blur-sm border-t shadow-2xl"
+          <motion.div
+            className="flex-shrink-0 border-t border-[var(--glass-stroke)] bg-white/85 dark:bg-slate-900/80 backdrop-blur-xl shadow-soft"
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
