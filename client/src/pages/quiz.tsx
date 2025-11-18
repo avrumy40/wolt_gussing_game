@@ -68,7 +68,7 @@ export default function Quiz({
       </div>
 
       {/* Scrollable Content Area */}
-      <div className="flex-1 overflow-y-auto px-4 py-4">
+      <div className="flex-1 overflow-y-auto px-4 py-4 pb-32 md:pb-36">
         <div className="max-w-5xl mx-auto glass-panel shadow-soft p-4 md:p-6">
           <AnimatePresence mode="wait">
             <motion.div
@@ -110,11 +110,15 @@ export default function Quiz({
 
               {/* Question */}
               <div className="text-center py-2 space-y-2">
-                <h2 className="text-lg md:text-xl font-semibold">
+                <h2 className="text-lg md:text-xl font-semibold leading-snug">
                   Which restaurant serves this dish?
                 </h2>
                 {currentQuestion.category && (
-                  <Badge variant="outline" className="text-xs capitalize shadow-sm pill-muted" data-testid="badge-category">
+                  <Badge
+                    variant="outline"
+                    className="text-xs md:text-sm capitalize shadow-sm pill-muted text-center leading-tight break-words"
+                    data-testid="badge-category"
+                  >
                     {currentQuestion.category}
                   </Badge>
                 )}
@@ -164,7 +168,10 @@ export default function Quiz({
                         )}
                         
                         <div className="relative flex items-center justify-between gap-3">
-                          <span className="text-sm md:text-base font-medium flex-1 text-center" data-testid={`text-option-${index}`}>
+                          <span
+                            className="text-sm md:text-base font-medium flex-1 text-center break-words leading-tight"
+                            data-testid={`text-option-${index}`}
+                          >
                             {option}
                           </span>
                           <AnimatePresence>
@@ -210,13 +217,13 @@ export default function Quiz({
       <AnimatePresence>
         {selectedAnswer && (
           <motion.div
-            className="flex-shrink-0 border-t border-[var(--glass-stroke)] bg-white/85 dark:bg-slate-900/80 backdrop-blur-xl shadow-soft"
-            initial={{ y: 100, opacity: 0 }}
+            className="fixed inset-x-0 bottom-0 z-50 border-t border-[var(--glass-stroke)] bg-white/90 dark:bg-slate-900/85 backdrop-blur-2xl shadow-2xl"
+            initial={{ y: 120, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            exit={{ y: 120, opacity: 0 }}
+            transition={{ type: "spring", stiffness: 300, damping: 28 }}
           >
-            <div className="max-w-5xl mx-auto p-4">
+            <div className="max-w-5xl mx-auto px-4 py-4">
               <Button
                 size="lg"
                 className="w-full text-base md:text-lg shadow-xl hover:shadow-2xl"
