@@ -8,12 +8,15 @@ import {
   Soup, 
   Salad, 
   Drumstick, 
-  Cake, 
+  Cake,
   IceCream,
   Sandwich,
   Flame,
   Leaf,
   Baby,
+  Linkedin,
+  Instagram,
+  Facebook,
   type LucideIcon
 } from "lucide-react";
 import { type Category } from "@shared/schema";
@@ -103,6 +106,38 @@ export default function CategorySelection({
                 <p className="text-xs md:text-sm text-muted-foreground">
                   Sleek Tel Aviv challenge
                 </p>
+                <div className="flex flex-col items-center md:items-start gap-2">
+                  <p className="text-xs md:text-sm text-muted-foreground">Created by Avrumy Schreiber</p>
+                  <div className="flex items-center gap-3 text-muted-foreground">
+                    <a
+                      href="https://www.linkedin.com/in/avrumy-schreiber/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-primary transition-colors"
+                      aria-label="LinkedIn profile"
+                    >
+                      <Linkedin className="h-4 w-4" />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/avrumy.sch/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-primary transition-colors"
+                      aria-label="Instagram profile"
+                    >
+                      <Instagram className="h-4 w-4" />
+                    </a>
+                    <a
+                      href="https://www.facebook.com/avrumy.schreiber"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="hover:text-primary transition-colors"
+                      aria-label="Facebook profile"
+                    >
+                      <Facebook className="h-4 w-4" />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
             <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
